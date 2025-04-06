@@ -1,8 +1,5 @@
-const DBService = require('../dbService');
-
-class FakeService extends DBService {
+class DBService {
   constructor() {
-    super();
     this.students = new Map();
     
     const dummyStudents = [
@@ -18,13 +15,13 @@ class FakeService extends DBService {
     });
   }
 
-  async getAllStudents() {
+  getAllStudents() {
     return Array.from(this.students.values());
   }
 
-  async getStudentById(matricula) {
+  getStudentById(matricula) {
     return this.students.get(matricula);
   }
 }
 
-module.exports = FakeService;
+module.exports = new DBService;
